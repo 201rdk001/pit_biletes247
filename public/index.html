@@ -10,6 +10,7 @@
   <div class="container">
     <button id="profileBtn">Show User Profile</button>
     <button id="ticketBtn">Show Create Tickets</button>
+    <button id="adminBtn">Show Admin Home</button>
   </div>
 
   <div id="userProfile" class="window hidden">
@@ -99,6 +100,70 @@
     <button id="create_tickets" onclick="closeWindow('createTickets')">Izveidot</button>
     </div>
     <button id="close_create_tickets" onclick="closeWindow('createTickets')">Close</button>
+  </div>
+
+  <div id="adminHome" class="window hidden">
+    <h1>1.Admins</h1>
+    <div id="admin-container">
+      <div id="admin-navigation">
+        <button id="btn-admin-users" class="admin-btns">Lietotāju pārvaldība</button>
+        <button id="btn-admin-events" class="admin-btns">Pasākumu apstiprināšana</button>
+        <button id="btn-admin-messages" class="admin-btns">Paziņojumi</button>
+        <button id="signOut" onclick="closeWindow('adminHome')" class="admin-btns">Atslēgties</button>
+      </div>
+      <div id="admin-content">
+        <div id="admin-users">
+          <table>
+            <tr>
+              <td>Lietotājvārds</td>
+              <td>E-pasts</td>
+              <td>Organizators</td>
+              <td>Deaktivizēts</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>jojododo</td>
+              <td>johndoe@gmail.com</td>
+              <td><label><input type="checkbox" id="toggle" name="toggle"></label></td>
+              <td><label><input type="checkbox" id="toggle" name="toggle"></label></td>
+              <td><button>Pārvaldīt</button></td>
+            </tr>
+          </table>
+        </div>
+        <div id="admin-events">
+          <table>
+            <tr>
+              <td>Datums:19/07/2025</td>
+              <td>Nosaukums:"Dzelzs Vilks" 20 gadu jubilejas koncerts</td>
+              <td><button>Informācija</button></td>
+              <td><button>Noraidīt</button></td>
+              <td><button>Apstiprināt</button></td>
+            </tr>
+            <tr>
+              <td>Datums:01/12/2024</td>
+              <td>Nosaukums:Koncerts Ukrainas atbalstam</td>
+              <td><button>Informācija</button></td>
+              <td><button>Noraidīt</button></td>
+              <td><button>Apstiprināt</button></td>
+            </tr>
+          </table>
+        </div>
+        <div id="admin-messages">
+          <table>
+            <tr>
+              <td>Datums:19/07/2024</td>
+              <td>No:DataBase</td>
+              <td>Warning!</td>
+            </tr>
+            <tr>
+              <td>Datums:20/10/2024</td>
+              <td>No:Organizators2</td>
+              <td>Koncerts "Molchat Doma" nenotiks, nauda tiks atgriezta pircējiem mēneša laikā.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
 <script src="file:///C:/Users/keita/Desktop/prog%20izstrade%20bilesu%20serviss/pit_biletes247/public/javascript/index.js"></script>

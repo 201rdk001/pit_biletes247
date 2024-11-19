@@ -110,11 +110,21 @@ table {
 width: 100%;
 border-collapse: collapse;
 margin-top: 20px;
+background-color: #ccc;
 }
 td {
 padding: 8px;
-border: 1px solid #ddd;
-color:white;
+border: 1px solid #000000;
+color:black;
+}
+table button{
+  color:black;
+  font-weight: 100;
+}
+table button:hover{
+  color:black;
+  background-color:#a4bfc4;
+  font-weight: 100;
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
@@ -238,6 +248,41 @@ button {
 #recall_create_tickets:hover {
   color:white;
   background-color: #63151c; /* Darker red on hover */
+}
+/*-------------------------------------------------------------------------------------------------------------------*/
+#admin-container {
+  display: flex; /* Aligns navigation and content side by side */
+  gap: 20px; /* Space between the navigation and content */
+  margin-top: 20px; /* Adds space between the h1 and the container */
+}
+
+#admin-navigation {
+  flex: 0 0 auto; /* Keeps its width based on the longest button */
+  padding: 10px; /* Adds padding inside the navigation block */
+  display: flex;
+  width:15%;
+  flex-direction: column; /* Stacks buttons vertically */
+  border: 1px solid #ccc; /* Optional: to visually separate the blocks */
+  border-radius: 8px; /* Optional: for rounded corners */
+}
+
+.admin-btns {
+  display: block; /* Stacks buttons under each other */
+  width: auto; /* Fills the width of the navigation container */
+  margin-bottom: 15px; /* Space between buttons */
+  color: #ccc;
+  background-color: #56676a;
+  padding: 10px; /* Button padding for size */
+}
+.admin-btns:hover{
+  background-color: #a4bfc4;
+  color:#56676a;
+}
+#admin-content {
+  flex: 1; /* Expands to fill the remaining space */
+  padding: 20px; /* Adds padding inside the content block */
+  border: 1px solid #ccc; /* Optional: to visually separate the blocks */
+  border-radius: 8px; /* Optional: for rounded corners */
 }
 
 .window {

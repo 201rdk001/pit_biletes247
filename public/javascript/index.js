@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
         showWindow('createTickets');
     });
 
+    document.getElementById('adminBtn').addEventListener('click', function () {
+        showWindow('adminHome');
+    });
+
     // Close window when close button is clicked
     document.querySelectorAll('.closeBtn').forEach(button => {
         button.addEventListener('click', function () {
@@ -47,3 +51,37 @@ function showMessages() {
   window.onload = function() {
     showMessages(); // Call to show messages when the page is first loaded
   };
+
+
+
+  // Function to show a specific admin section and hide the others
+function showSection(sectionId) {
+    // Get all the content divs
+    const sections = document.querySelectorAll('#admin-content > div');
+
+    // Loop through each section and hide it
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Show the specific section by ID
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+// Add event listeners to buttons
+document.getElementById('btn-admin-users').addEventListener('click', function() {
+    showSection('admin-users');
+});
+
+document.getElementById('btn-admin-events').addEventListener('click', function() {
+    showSection('admin-events');
+});
+
+document.getElementById('btn-admin-messages').addEventListener('click', function() {
+    showSection('admin-messages');
+});
+
+// Optionally, show a default section when the page loads
+window.onload = function() {
+    showSection('admin-users'); // Show the "admin-users" section by default
+};
