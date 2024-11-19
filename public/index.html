@@ -2,12 +2,64 @@
 
 <head>
   <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="file:///C:/Users/keita/Desktop/prog%20izstrade%20bilesu%20serviss/pit_biletes247/public/stylesheet/style.css">
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+
+  <div class="container">
+    <button id="profileBtn">Show User Profile</button>
+    <button id="ticketBtn">Show Create Tickets</button>
+  </div>
+
+  <div id="userProfile" class="window hidden">
+    <h1>Lietotāja Profils</h1>
+    <p>Name: John Doe</p>
+    <p>Email: john.doe@example.com</p>
+    <button onclick="closeWindow('userProfile')">Close</button>
+  </div>
+
+  <div id="createTickets" class="window hidden">
+    <h1 id="heading_tickets">Izveidot biļetes:</h1>
+    <div class="input-block">
+    <label for="Event">Pasākums:</label>
+    <select id="Event">
+        <option value="ev1">pasākums1</option>
+        <option value="ev2">pasākums2</option>
+        <option value="ev3">pasākums3</option>
+        <option value="ev4">pasākums4</option>
+        <option value="ev5">pasākums5</option>
+    </select>
+    </div>
+    <div class="input-block">
+      <label for="cena">Cena:</label>
+      <input type="number" id="price" placeholder="0.00" min="0" step="0.01">
+    </div>
+
+    <div class="input-block">
+      <label for="skaits">Skaits:</label>
+      <input type="number" id="quantity" placeholder="0" min="0" step="1">
+    </div>
+
+    <div class="input-block two-columns">
+      <div>
+          <label for="datums">Pārdošanā no:</label>
+          <input type="date" id="datums" placeholder="Datums">
+      </div>
+      <div>
+          <label for="laiks">plkst.:</label>
+          <input type="time" id="laiks" placeholder="Laiks">
+      </div>
+    </div>
+    <div class="button-container">
+    <button id="recall_create_tickets" onclick="closeWindow('createTickets')">Atcelt</button>
+    <button id="create_tickets" onclick="closeWindow('createTickets')">Izveidot</button>
+    </div>
+    <button id="close_create_tickets" onclick="closeWindow('createTickets')">Close</button>
+  </div>
+
+<script src="file:///C:/Users/keita/Desktop/prog%20izstrade%20bilesu%20serviss/pit_biletes247/public/javascript/index.js"></script>
+
 </body>
 
 </html>

@@ -1,8 +1,156 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  margin: 0;
 }
 
 a {
   color: #00B7FF;
+}
+
+.container {
+  margin-bottom: 20px;
+}
+
+#userProfile{
+  align-content: center;
+}
+
+#createTickets{
+  align-content: center;
+}
+
+#heading_tickets{
+  text-align: center;
+  color: rgb(255, 255, 255);
+  
+}
+#close_create_tickets{
+  position: fixed;
+  top:60%;
+}
+label{
+  color: white;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+/* Styling for individual input blocks */
+.input-block {
+  display: flex; /* Flexbox to align the input field next to the label */
+  margin-bottom: 30px; /* Space between input blocks vertically */
+  align-items: center; /* Vertically align the input field */
+}
+
+.input-block input,
+.input-block select {
+  width: 100%; /* Make the select box as wide as the input field */
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f4f4f4; /* Light gray background for input/select */
+  appearance: none; /* Remove default styling from the select box (for most browsers) */
+  -webkit-appearance: none; /* Safari */
+  -moz-appearance: none; /* Firefox */
+}
+
+/* Optional: Add some padding to make the dropdown arrow visible */
+.input-block select {
+  padding-right: 30px; /* Space for the dropdown arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><polygon points="0,0 5,6 10,0" fill="%23ccc" /></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position the arrow on the right */
+  background-size: 12px 7px; /* Set the size of the arrow */
+}
+
+/* Styling for the two-column input block */
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 20px; /* Space between columns */
+}
+
+.two-columns div {
+  display: flex;
+  flex-direction: column;
+}
+
+.two-columns .label {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #fff; /* White label text */
+}
+
+.two-columns input,
+.two-columns select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+
+@media (max-width: 600px) {
+  .two-columns {
+      grid-template-columns: 1fr; /* Stack inputs vertically on smaller screens */
+  }
+}
+
+
+button {
+  margin: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 20px 40px; /* Increase padding for a larger button */
+  font-size: 20px; /* Increase font size */
+  border: none; /* Remove default border */
+  border-radius: 12px; /* Rounded corners */
+}
+.button-container {
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (if needed) */
+  gap: 20px; /* Space between the buttons */
+  margin-top: 20px; /* Optional, adjust spacing from top */
+}
+/* Green button style */
+#create_tickets {
+  color: #063b28;
+  background-color: #a7ff7a; /* Green background */
+}
+
+#create_tickets:hover {
+  color: white;
+  background-color: #063b28; /* Darker green on hover */
+}
+
+/* Red button style */
+#recall_create_tickets {
+  background-color: #e46874; /* Red background */
+}
+
+#recall_create_tickets:hover {
+  color:white;
+  background-color: #63151c; /* Darker red on hover */
+}
+
+.window {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(51, 84, 96, 0.674);
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 100%;
+  width: 40%;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
 }
