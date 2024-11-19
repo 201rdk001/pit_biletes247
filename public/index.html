@@ -24,7 +24,7 @@
         <div class="prof-buttons">
           <button onclick="editProfile()" id="editAcc" class="prof-button">Rediģēt</button>
           <button onclick="deactivate()" id="deactivate" class="prof-button">Deaktivizēt kontu</button>
-          <button onclick="signOut()" id="signOut" class="prof-button">Atslēgties</button>
+          <button onclick="closeWindow('userProfile')" id="signOut" class="prof-button">Atslēgties</button>
         </div>
       </div>
       <div id="mes-his-block">
@@ -60,7 +60,6 @@
         </div>
       </div>
     </div>
-    <button onclick="closeWindow('userProfile')">Close</button>
   </div>
 
   <div id="createTickets" class="window hidden">
@@ -99,7 +98,6 @@
     <button id="recall_create_tickets" onclick="closeWindow('createTickets')">Atcelt</button>
     <button id="create_tickets" onclick="closeWindow('createTickets')">Izveidot</button>
     </div>
-    <button id="close_create_tickets" onclick="closeWindow('createTickets')">Close</button>
   </div>
 
   <div id="adminHome" class="window hidden">
