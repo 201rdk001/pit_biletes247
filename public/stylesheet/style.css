@@ -27,12 +27,21 @@ h1{
 }
 
 /* Styling for each block to ensure they don't shrink */
-#user-block, #mes-his-block {
-  flex:content; /* Adjusts the size equally */
+#user-block {
+  flex-shrink: 0; /* Prevents shrinking of the user block */
+  padding: 20px;
+  text-align: center; 
+  border: 1px solid #ccc; /* Optional: to visually separate the blocks */
+  border-radius: 8px; /* Optional: for rounded corners */
+}
+
+#mes-his-block {
+  flex-grow: 1; /* Makes this block take up the remaining space */
   padding: 20px;
   border: 1px solid #ccc; /* Optional: to visually separate the blocks */
   border-radius: 8px; /* Optional: for rounded corners */
 }
+
 .prof-buttons {
   display: flex; /* Using flexbox to center the buttons */
   flex-direction: column; /* Stack buttons vertically */
@@ -65,7 +74,28 @@ h1{
   color:white;
   background-color: #63151c; /* Darker red on hover */
 }
+/* Hide both divs initially */
+#messages, #tickets-history {
+display: none;
+}
+/* Optional styling for the buttons */
+#mes-his-block button {
+margin: 10px;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+}
 
+/* Table styling */
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+}
+td {
+padding: 8px;
+border: 1px solid #ddd;
+}
 
 /*-------------------------------------------------------------------------------------------*/
 #createTickets{

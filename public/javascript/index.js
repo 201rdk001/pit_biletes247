@@ -32,3 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// Function to show the messages div and hide the tickets history div
+function showMessages() {
+    document.getElementById('messages').style.display = 'block';
+    document.getElementById('tickets-history').style.display = 'none';
+  }
+
+  // Function to show the tickets history div and hide the messages div
+  function showTicketsHistory() {
+    document.getElementById('tickets-history').style.display = 'block';
+    document.getElementById('messages').style.display = 'none';
+  }
+  // Show messages by default when the page loads
+  window.onload = function() {
+    showMessages(); // Call to show messages when the page is first loaded
+  };

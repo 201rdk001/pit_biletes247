@@ -13,7 +13,7 @@
   </div>
 
   <div id="userProfile" class="window hidden">
-    <h1>Lietotāja Profils:</h1>
+    <h1>Lietotāja Profils</h1>
     <div class="container-profile">
       <div id="user-block">
         <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" width="150" height="auto">
@@ -27,8 +27,36 @@
         </div>
       </div>
       <div id="mes-his-block">
-        <button>Paziņojumi</button>
-        <button>Iegādātās biļetes</button>
+        <button onclick="showMessages()" id="btn-messages">Paziņojumi</button>
+        <button onclick="showTicketsHistory()" id="btn-tickets-history">Iegādātās biļetes</button>
+        <div id="messages">
+          <table>
+            <tr>
+              <td>Datums:19/07/2024</td>
+              <td>No:Positivus</td>
+              <td>Fesivāls tiek pārcelts uz citu datumu!</td>
+            </tr>
+            <tr>
+              <td>Datums:20/10/2024</td>
+              <td>No:Palladium Riga</td>
+              <td>Koncerts "Molchat Doma" nenotiks, nauda tiks atgriezta mēneša laikā.</td>
+            </tr>
+          </table>
+        </div>
+        <div id="tickets-history">
+          <table>
+            <tr>
+              <td>03/11/2023</td>
+              <td>Pasākums1</td>
+              <td><button>Lejupielādēt</button></td>
+            </tr>
+            <tr>
+              <td>10/10/2024</td>
+              <td>Pasākums2</td>
+              <td><button>Lejupielādēt</button></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
     <button onclick="closeWindow('userProfile')">Close</button>
