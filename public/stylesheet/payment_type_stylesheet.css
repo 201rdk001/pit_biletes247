@@ -1,0 +1,53 @@
+.form-container {
+    background-color: #708090;
+    padding: 20px;
+    padding-left: 40px;
+    border-radius: 8px;
+    margin: auto;
+    color: white;
+}
+
+.form-container label{
+    display:block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* ----------- Biļešu skaits -------------*/
+.ticket-count {
+    display: flex;
+    align-items: center;
+}
+
+.ticket-count button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border: none;
+    background-color: #3181CB;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ticket-count button img{
+    width:18px;
+    height:18px;
+}
+
+.ticket-count input {
+    width: 50px;
+    height: 35px;
+    margin-left: 10px;
+}
+
+
+/* For <input type="number"> so that the built-in arrows do not show*/
+ .no-spinners::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+ }
+
