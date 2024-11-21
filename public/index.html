@@ -1,13 +1,61 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILETES 24/7</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+    <div class="container">
+        <!-- Login Section -->
+        <div id="login" class="main">
+            <h1>BILETES 24/7</h1>
+            <h2>Lietotāja autorizācija</h2>
+            <form action="">
+                <label for="user">Lietotājvārds:</label>
+                <input type="text" id="user" name="user" placeholder="Ievadiet savu lietotājvārdu" required>
+                <label for="pass">Parole:</label>
+                <input type="password" id="pass" name="pass" placeholder="Ievadiet savu paroli" required>
+                <div class="pogas">
+                    <button type="button" onclick="">Ienākt</button>
+                    <button type="button" onclick="showSection('register')">Reģistrēties</button>
+                    <button type="button" onclick="">Atjaunot paroli</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Register Section -->
+        <div id="register" class="main hidden">
+            <h1>BILETES 24/7</h1>
+            <h2>Jauna lietotāja reģistrācija</h2>
+            <form action="">
+                <label for="epasts">E-pasts:</label>
+                <input type="email" id="epasts" name="epasts" placeholder="Ievadiet savu e-pastu" required>
+                <label for="username">Lietotājvārds:</label>
+                <input type="text" id="username" name="username" placeholder="Izveidojiet lietotājvārdu" required>
+                <label for="psw">Parole:</label>
+                <input type="password" id="psw" name="psw" placeholder="Izveidojiet paroli" required>
+                <label for="psw2">Parole atkārtoti:</label>
+                <input type="password" id="psw2" name="psw2" placeholder="Ievadiet paroli atkārtoti" required>
+                <div class="pogas">
+                    <button type="button" onclick="">Reģistrēties</button>
+                    <button type="button" onclick="showSection('login')">Atgriezties</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.main').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
 </body>
 
 </html>
