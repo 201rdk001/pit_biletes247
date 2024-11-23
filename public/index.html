@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <!-- Login Section -->
+        <!--Login-->
         <div id="login" class="main">
             <h1>BILETES 24/7</h1>
             <h2>Lietotāja autorizācija</h2>
@@ -20,14 +20,14 @@
                 <label for="pass">Parole:</label>
                 <input type="password" id="pass" name="pass" placeholder="Ievadiet savu paroli" required>
                 <div class="pogas">
-                    <button type="button" onclick="">Ienākt</button>
+                    <button type="submit" onclick="">Ienākt</button>
                     <button type="button" onclick="showSection('register')">Reģistrēties</button>
                     <button type="button" onclick="">Atjaunot paroli</button>
                 </div>
             </form>
         </div>
 
-        <!-- Register Section -->
+        <!--Register-->
         <div id="register" class="main hidden">
             <h1>BILETES 24/7</h1>
             <h2>Jauna lietotāja reģistrācija</h2>
@@ -41,7 +41,7 @@
                 <label for="psw2">Parole atkārtoti:</label>
                 <input type="password" id="psw2" name="psw2" placeholder="Ievadiet paroli atkārtoti" required>
                 <div class="pogas">
-                    <button type="button" onclick="">Reģistrēties</button>
+                    <button type="submit">Reģistrēties</button>
                     <button type="button" onclick="showSection('login')">Atgriezties</button>
                 </div>
             </form>
@@ -55,6 +55,30 @@
             });
             document.getElementById(sectionId).classList.remove('hidden');
         }
+
+        function checkRegister(sectionID1, sectionID2) {
+        const psw1 = document.getElementById(sectionID1).value;
+        const psw2 = document.getElementById(sectionID2).value;
+
+        if (psw1 == psw2) {
+            return true
+        } else {
+            alert("Ievadītās paroles nesakrīt!");
+            return false;
+        }
+    }
+
+    document.getElementById('register').addEventListener('submit', function (e) {
+        const newUser = checkRegister('psw', 'psw2');
+
+        if (!newUser) {
+            e.preventDefault();
+        }
+        else{
+            alert('Jauns lietotājs veiksmīgi reģistrēts!');
+    }
+});
+
     </script>
 </body>
 
