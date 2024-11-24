@@ -1,8 +1,121 @@
-body {
-  padding: 50px;
+/* Main Layout */
+html, body {
+  background-color: cadetblue;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: #00B7FF;
+h1, h2, h3 {
+  text-align: center;
+  color: #333;
+}
+
+header {
+  align-items: center;
+  background-color: #eee;
+  display: flex;
+  height: 3em;
+  justify-content: space-between;
+  padding-left: 4em;
+  padding-right: 4em;
+    box-shadow: 0 0 8px #444;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+aside {
+  background-color: #eee;
+  box-shadow: 0 0 8px #444;
+  flex: 1 0 auto;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 1em;
+  max-width: 18em;
+  text-align: center;
+}
+
+section {
+  background-color: #eee;
+  box-shadow: 0 0 8px #444;
+  flex: 1 1 auto;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 1em;
+  padding-bottom: 1em;
+}
+
+header > div:nth-child(2) > a {
+  margin: 0 1em;
+}
+
+@media (max-width: 1200px) {
+  aside {
+    max-width: none;
+    padding-bottom: 1em;
+  }
+
+  main {
+    flex-direction: column;
+    margin: 0;
+  }
+}
+
+/* Miscellaneous elements */
+.search-icon-btn {
+  background-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M17.0392%2015.6244C18.2714%2014.084%2019.0082%2012.1301%2019.0082%2010.0041C19.0082%205.03127%2014.9769%201%2010.0041%201C5.03127%201%201%205.03127%201%2010.0041C1%2014.9769%205.03127%2019.0082%2010.0041%2019.0082C12.1301%2019.0082%2014.084%2018.2714%2015.6244%2017.0392L21.2921%2022.707C21.6828%2023.0977%2022.3163%2023.0977%2022.707%2022.707C23.0977%2022.3163%2023.0977%2021.6828%2022.707%2021.2921L17.0392%2015.6244ZM10.0041%2017.0173C6.1308%2017.0173%202.99087%2013.8774%202.99087%2010.0041C2.99087%206.1308%206.1308%202.99087%2010.0041%202.99087C13.8774%202.99087%2017.0173%206.1308%2017.0173%2010.0041C17.0173%2013.8774%2013.8774%2017.0173%2010.0041%2017.0173Z%22%20fill%3D%22%230F0F0F%22%2F%3E%3C%2Fsvg%3E");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  border-radius: 3px;
+  border: none;
+  height: 21px;
+  padding: 0;
+  width: 21px;
+}
+
+/* Events layout */
+#event-list {
+  display: flex;
+  flex-direction: column;
+}
+
+#event-list > div {
+  background-color: white;
+  display: flex;
+  height: 128px;
+  margin: 0.5em 2em;
+  overflow: hidden;
+  box-shadow: 0 0 12px #ccc;
+}
+
+#event-list > div > div:nth-child(1) > img {
+  max-width: 128px;
+}
+
+#event-list > div > div:nth-child(2) {
+  margin: auto auto auto 1em;
+}
+
+#event-list > div > div:nth-child(2) > h3 {
+  text-align: left;
+}
+
+#event-list > div > div:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 3em;
+  width: 128px;
+}
+
+#event-list > div > div:nth-child(3) > span {
+  text-align: center;
 }

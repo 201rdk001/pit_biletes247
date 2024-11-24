@@ -1,0 +1,32 @@
+<main>
+    <aside>
+        <h2>Mēklēt pasākumus</h2>
+        <form action="/events">
+            <input type="text" name="search" placeholder="Nosaukums">
+            <input type="submit" class="search-icon-btn" value="">
+        </form>
+    </aside>
+    <section>
+        <h2>Tuvākie pasākumi</h2>
+        <div id="event-list">
+            {{#each events}}
+                <div>
+                    <div>
+                        <img src="images/{{this.event_id}}.jpg">
+                    </div>
+                    <div>
+                        <h3>{{this.name}}</h3>
+                        <p>{{this.place}} ({{this.address}})</p>
+                        <p>{{this.event_time}}</p>
+                        {{!-- <p>27. oktobrī, plkst. 22:00</p> --}}
+                    </div>
+                    <div>
+                        <button>Apskatīt</button>
+                        <button>Iepirkt biļeti</button>
+                        <span>Cena: {{this.price}} €</span>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+</main>
