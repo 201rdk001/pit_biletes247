@@ -15,16 +15,17 @@ function closeWindow(windowId) {
 document.addEventListener('DOMContentLoaded', function () {
     // Open user profile window when profile button is clicked
     document.getElementById('profileBtn').addEventListener('click', function () {
-        showWindow('userProfile');
+        window.location.href = 'profils.html';
     });
 
     // Open tickets window when ticket button is clicked
     document.getElementById('ticketBtn').addEventListener('click', function () {
-        showWindow('createTickets');
+        window.location.href = 'bilesu_izveide.html';
     });
 
     document.getElementById('adminBtn').addEventListener('click', function () {
-        showWindow('adminHome');
+        window.location.href = 'admin.html'; // Atver admin.html failu
+    });
     });
 
     // Close window when close button is clicked
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             const window = button.closest('.window');
             window.classList.add('hidden'); // Hide the closest window element
-        });
+        
     });
 });
 
