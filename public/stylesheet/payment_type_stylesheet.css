@@ -1,7 +1,9 @@
+/* global stuff */
 .form-container {
     background-color: #708090;
     padding: 20px;
     padding-left: 40px;
+    padding-right: 30px;
     border-radius: 8px;
     margin: auto;
     color: white;
@@ -12,6 +14,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 
 /* ----------- Biļešu skaits -------------*/
 .ticket-count {
@@ -44,10 +47,68 @@
     margin-left: 10px;
 }
 
+.price {
+    margin-left: auto;
+    text-align: right;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+}
 
-/* For <input type="number"> so that the built-in arrows do not show*/
+
+/* For <input type="number"> so that the built-in arrows do not show
+Not really used rn, but might need in future if we want the user to 
+input the tickets himself using a keyboard */
  .no-spinners::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
  }
 
+
+/* ---------- Payment type ---------------- */
+.select-payment-method label {
+    padding-bottom: 5px;
+}
+
+.select-payment-method input {
+    margin-bottom: 5px;
+}
+
+
+/* -------------- Bank logos --------------- */
+.internetbanks {
+    margin-top: 20px;
+}
+
+.internetbanks img {
+    width: 70px;
+    height: 40;
+    cursor: pointer;
+}
+
+/* -------------- Card details --------------- */
+
+.card-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 15px
+}
+
+.center {
+    margin: 0px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.buy-button {
+    margin-top: 25px;
+    height: 30px;
+    width: 90px;
+    font-size: 16;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Piezīme - es tikai tagad sapratu, ka es sākumā rakstīju komentārus latviski, bet tagad angliski */
