@@ -1,0 +1,69 @@
+const database = require("../database");
+
+/**
+ * Event object
+ * @typedef {Object} Event
+ * @property {number} id
+ * @property {string} name
+ * @property {string} type
+ * @property {string} description
+ * @property {string} place
+ * @property {string} address
+ * @property {number} duration
+ * @property {number?} age_limit
+ * @property {string?} website
+ * @property {boolean?} is_approved
+ * @property {Date} created_at
+ */ 
+
+/**
+ * EventTicket object
+ * @typedef {Object} EventTicket
+ * @property {number} id
+ * @property {number} event_id
+ * @property {number} event_time
+ * @property {number} sale_time
+ * @property {number} count
+ * @property {number} unit_price
+ * @property {number} created_at
+ * @property {string} name
+ * @property {string} place
+ * @property {string} address
+ * @property {number} duration
+ * @property {number?} age_limit
+ */ 
+
+/**
+ * Get all events in database
+ * @param {import("sqlite3").Database} db
+ * @returns {Promise<Event[]>}
+ */
+function loadEvents(db) {
+    return new Promise((resolve, reject) => {
+        db.all(
+            `SELECT * FROM "events";`,
+            (err, rows) => err ? reject(err) : resolve(rows)
+        );
+    });
+}
+
+/**
+ * Get the soonest upcoming events (max 30)
+ * @param {import("sqlite3").Database} db
+ * @returns {Promise<EventTicket[]>}
+ */
+function loadUpcomingEvents(db) {
+    return new Promise((resolve, reject) => {
+        db.all(
+            `SELECT T.*, E.name, E.place, E.address, E.duration, E.age_limit
+            FROM tickets T
+            JOIN events E ON E.id = T.event_id
+            ORDER BY event_time LIMIT 15;`,
+            (err, rows) => err ? reject(err) : resolve(rows)
+        );
+    });
+}
+
+module.exports = { loadEvents, loadUpcomingEvents };
+
+
