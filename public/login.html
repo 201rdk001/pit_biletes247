@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILETES 24/7</title>
+    <link rel="stylesheet" href="stylesheet/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--Login-->
+        <div id="login" class="main">
+            <h1>BILETES 24/7</h1>
+            <h2>Lietotāja autorizācija</h2>
+            <form id="login-form" action="/login" method="POST">
+                <label for="login_user">Lietotājvārds:</label>
+                <input type="text" id="login_user" name="login_user" placeholder="Ievadiet savu lietotājvārdu" required>
+                <label for="login_pass">Parole:</label>
+                <input type="password" id="login_pass" name="login_pass" placeholder="Ievadiet savu paroli" required>
+                <div class="pogas">
+                    <button type="submit">Ienākt</button>
+                    <button type="button" onclick="showSection('register')">Reģistrēties</button>
+                </div>
+            </form>
+        </div>
+
+        <!--Register-->
+        <div id="register" class="main hidden">
+            <h1>BILETES 24/7</h1>
+            <h2>Jauna lietotāja reģistrācija</h2>
+            <form id="register-form" action="/register" method="POST">
+                <label for="register_email">E-pasts:</label>
+                <input type="email" id="register_email" name="register_email" placeholder="Ievadiet savu e-pastu" required>
+                <label for="register_user">Lietotājvārds:</label>
+                <input type="text" id="register_user" name="register_user" placeholder="Izveidojiet lietotājvārdu" required>
+                <label for="register_pass">Parole:</label>
+                <input type="password" id="register_pass" name="register_pass" placeholder="Izveidojiet paroli" required>
+                <div class="pogas">
+                    <button type="submit">Reģistrēties</button>
+                    <button type="button" onclick="showSection('login')">Atgriezties</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.main').forEach(section => {
+                section.classList.add('hidden');
+                document.getElementById('login-form').reset();
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.getElementById('register-form').reset();
+        }
+
+        //register 
+        document.getElementById('register-form').addEventListener('submit', async (event) => {
+        event.preventDefault(); 
+
+        const email = document.getElementById('register_email').value;
+        const username = document.getElementById('register_user').value;
+        const password = document.getElementById('register_pass').value;
+
+       
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    register_email: email,
+                    register_user: username,
+                    register_pass: password,
+                }),
+            });
+            const message = await response.text(); 
+            if(message=='ir'){
+                alert('Jauns lietotājs veiksmīgi izveidots!');
+            }else{
+            alert(message);
+            }
+    });
+
+    //login
+    document.getElementById('login-form').addEventListener('submit', async (event) => {
+        event.preventDefault(); 
+        const username = document.getElementById('login_user').value;
+        const password = document.getElementById('login_pass').value;
+
+        
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    login_user: username,
+                    login_pass: password,
+                }),
+            });
+            const message = await response.text(); 
+            if(message=='ir'){
+            document.location.href='homepage.html';
+            }
+            else{
+            alert(message);
+            }
+        });
+    </script>
+</body>
+
+</html>
