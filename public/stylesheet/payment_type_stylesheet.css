@@ -1,4 +1,4 @@
-/* global stuff */
+/* globālais konteineris */
 .form-container {
     background-color: #708090;
     padding: 20px;
@@ -56,16 +56,20 @@
 }
 
 
-/* For <input type="number"> so that the built-in arrows do not show
-Not really used rn, but might need in future if we want the user to 
-input the tickets himself using a keyboard */
- .no-spinners::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+/* Noņem iebūvētās bultiņas, kur <input type=number>, jo tās te nav nepieciešamas */
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
+
+ /* Dara to pašu, tikai priekš firefox */
+ input[type="number"] {
+     -moz-appearance: textfield;
  }
 
 
-/* ---------- Payment type ---------------- */
+/* ---------- Maksājuma veids ---------------- */
 .select-payment-method label {
     padding-bottom: 5px;
 }
@@ -75,7 +79,7 @@ input the tickets himself using a keyboard */
 }
 
 
-/* -------------- Bank logos --------------- */
+/* -------------- Banku logo --------------- */
 .internetbanks {
     margin-top: 20px;
 }
@@ -86,7 +90,7 @@ input the tickets himself using a keyboard */
     cursor: pointer;
 }
 
-/* -------------- Card details --------------- */
+/* -------------- Kartes detaļas --------------- */
 
 .card-info {
     display: grid;
@@ -110,5 +114,3 @@ input the tickets himself using a keyboard */
     border-radius: 8px;
     cursor: pointer;
 }
-
-/* Piezīme - es tikai tagad sapratu, ka es sākumā rakstīju komentārus latviski, bet tagad angliski */

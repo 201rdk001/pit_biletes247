@@ -12,9 +12,9 @@
             <label>Biļešu skaits:</label>
 
             <!--TODO: make the buttons do something-->
-            <button><img src="assets\misc\triangle_up.png" alt="-"></button>
-            <input type="number" id="ticket-count" value="1" class="no-spinners" readonly>
-            <button><img src="assets\misc\triangle_down.png" alt="+"></button>
+            <button><img src="assets\misc\triangle_up.png" alt="+" onClick="changeTicketCount(1)"></button>
+            <input type="number" id="ticket-count" value="1" readonly>
+            <button><img src="assets\misc\triangle_down.png" alt="-" onClick="changeTicketCount(-1)"></button>
 
             <!--TODO: make the price do it's thing
                     also maybe if more than 1 ticket bought display
@@ -26,9 +26,8 @@
                 <label>Cena: €&nbsp</label>
                 <label class="price-label" id="price">6.59</label>
             </div>
-
-
         </div>
+        <label style="padding-top: 0px">Pieejamo biļešu skaits: <b>7</b></label>
         <div class="select-payment-method">
             <label>Maksājuma veids:</label>
             <input type="radio" name="payment-method" id="internetbank" onclick="showInternetBanks()" value="internetbank" checked> Internetbanka
@@ -60,7 +59,7 @@
                 <input id="card-name" placeholder="John Maliszewski" type="text">
             </div>
 
-            <!--TODO: Make the button more visually pleasing because idk-->
+            <!--TODO: Make the button look better-->
             <button class="center buy-button" id="buy-button" onclick="buyButton()">Pirkt</button>
 
         </div>
@@ -68,7 +67,7 @@
 </body>
 <script>
 
-    // Functions for switching between internet bank and card forms
+    // Funkcijas priekš internetbankas un bankas kartes skatu mainīšanas
     function showInternetBanks() {
         document.getElementById('card-form').style.display = 'none';
         document.getElementById('internetbank-form').style.display = 'block';
@@ -83,14 +82,76 @@
     TODO:
         1. Make it so that something actually happens after pressing buy like redirecting to
             another page with the info that the tickets were bought and stuff
-        2. Make it so that the values get checked before it gives out a successful purchase alert
     */
+
+    // Apraksta kas notiek, ja nospiež "Pirkt"
     function buyButton() {
+        // Pārbauda, vai kartes dati pareizi, ja nav - ziņojums un beidzas funkcijas tālāka darbība
+        if (!checkCardDetailValidity()) {
+            alert("Kartes dati ievadīti nepareizi")
+            return;
+        }
         alert("Paldies par pirkumu\nJūsu biļetes tika nosūtītas uz e-pastu")
+
+        // Vajadzētu redirectot uz kādu citu lapu varbūt šeit
         document.getElementById('card-number').value = '';
         document.getElementById('card-cvv').value = '';
         document.getElementById('card-exp-date').value = '';
         document.getElementById('card-name').value = '';
+    }
+
+    function changeTicketCount(amount) {
+        let ticketCount = parseInt(document.getElementById('ticket-count').value);
+        let availableSeatAmount = 7;
+
+        // Biļešu skaitam ir jābūt vismaz 1, bet ne vairāk kā pieejamo biļešu skaitam
+        ticketCount = Math.max(1, ticketCount + amount);
+        ticketCount = Math.min(ticketCount, availableSeatAmount);
+        document.getElementById('ticket-count').value = ticketCount;
+
+        // Cenas atjaunošana
+        let pricePerTicket = 6.59; // If later on we will need a pricePerTicket on an event basis, will fix
+        let totalPrice = (ticketCount * pricePerTicket).toFixed(2); // computers are bad at multiplying floats sometimes
+    
+        document.getElementById('price').textContent = totalPrice;
+    }
+
+
+    function checkCardDetailValidity() {
+        let cardNumber = document.getElementById('card-number').value;
+        let cardCVV = document.getElementById('card-cvv').value;
+        let cardExpDate = document.getElementById('card-exp-date').value;
+        let cardName = document.getElementById('card-name').value;
+
+        // Internets saka, ka var būt no 15 līdz 19 šeit
+        if (cardNumber.length < 15 || cardNumber.length > 19) {
+            return false;
+        }
+        
+        // Pārbauda, vai kartes numurs satur kādu citu simbolu, kurš nav cipars
+        if (!/^\d+$/.test(cardNumber)) {
+            return false;
+        }
+        
+        if (cardCVV.length != 3) {
+            return false;
+        }
+
+        if (!/^\d+$/.test(cardCVV)) {
+            return false;
+        }
+        
+        // TODO: Check date better
+        if (cardExpDate.length != 5 || cardExpDate.charAt(2) != '/') {
+            return false;
+        }
+
+
+        if (cardName.trim() === "") {
+            return false;
+        }
+        
+        return true;
     }
 
 </script>
