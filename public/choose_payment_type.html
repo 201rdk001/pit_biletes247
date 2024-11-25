@@ -12,9 +12,9 @@
             <label>Biļešu skaits:</label>
 
             <!--TODO: make the buttons do something-->
-            <button><img src="assets\misc\triangle_up.png" alt="+" onClick="changeTicketCount(1)"></button>
+            <button onClick="changeTicketCount(1)"><img src="assets\misc\triangle_up.png" alt="+"></button>
             <input type="number" id="ticket-count" value="1" readonly>
-            <button><img src="assets\misc\triangle_down.png" alt="-" onClick="changeTicketCount(-1)"></button>
+            <button onClick="changeTicketCount(-1)"><img src="assets\misc\triangle_down.png" alt="-"></button>
 
             <!--TODO: make the price do it's thing
                     also maybe if more than 1 ticket bought display
@@ -23,8 +23,10 @@
                     Total: 19.77
                     that's optional though-->
             <div class="price">
-                <label>Cena: €&nbsp</label>
-                <label class="price-label" id="price">6.59</label>
+                <label id="single-ticket-price">Cena: € 6.59 ×&nbsp</label>
+                <label id="ticket-count-calculation">1</label>
+                <label>&nbsp=&nbsp</label>
+                <label class="price-label" id="price">€ 6.59</label>
             </div>
         </div>
         <label style="padding-top: 0px">Pieejamo biļešu skaits: <b>7</b></label>
@@ -108,12 +110,13 @@
         ticketCount = Math.max(1, ticketCount + amount);
         ticketCount = Math.min(ticketCount, availableSeatAmount);
         document.getElementById('ticket-count').value = ticketCount;
+        document.getElementById('ticket-count-calculation').textContent = ticketCount;
 
         // Cenas atjaunošana
         let pricePerTicket = 6.59; // If later on we will need a pricePerTicket on an event basis, will fix
         let totalPrice = (ticketCount * pricePerTicket).toFixed(2); // computers are bad at multiplying floats sometimes
     
-        document.getElementById('price').textContent = totalPrice;
+        document.getElementById('price').textContent = "€ " + totalPrice;
     }
 
 

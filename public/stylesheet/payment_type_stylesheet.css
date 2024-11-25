@@ -7,6 +7,7 @@
     border-radius: 8px;
     margin: auto;
     color: white;
+    width: 800px
 }
 
 .form-container label{
@@ -51,8 +52,13 @@
     margin-left: auto;
     text-align: right;
     display: flex;
+    color: white;
+    font-size: 16px;
+}
+
+.price-label {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: bold
 }
 
 
@@ -104,7 +110,7 @@
     position: relative;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} 
 .buy-button {
     margin-top: 25px;
     height: 30px;
