@@ -2,6 +2,7 @@ var express = require('express');
 var asyncHn = require('express-async-handler');
 var router = express.Router();
 var database = require('../database');
+var bcrypt = require('bcrypt');
 var { loadUser, saveUser } = require('../models/user');
 
 const msgTable = {
@@ -14,7 +15,7 @@ const msgTable = {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.redirect("login#register");
+  res.redirect("login");
 });
 
 // TODO: add auth and session middleware
@@ -28,7 +29,7 @@ router.get('/login', function (req, res) {
 router.post('/login', asyncHn(async function (req, res) {
   try {
     const user = await loadUser(req.app.db, req.body.username);
-    if (user?.password === req.body.password) {
+    if (await bcrypt.compare(req.body.password, user?.password) ) {
       res.redirect('events');
     }
     else {
@@ -42,15 +43,17 @@ router.post('/login', asyncHn(async function (req, res) {
 
 /* GET logout. */
 router.get('/logout', function (req, res) {
-  // TODO
-  res.send("logout response <script>setTimeout(() => { window.location.pathname = '/login' }, 3000);</script>");
+  // TODO: logout
+  res.redirect('login');
 });
 
 router.post('/register', asyncHn(async function (req, res) {
+  const hashedPassword = await bcrypt.hash(req.body.password, 12);
+
   let newUser = {
     username: req.body.username,
     email: req.body.email,
-    password: req.body.password,
+    password: hashedPassword,
     send_announcements_email: false,
     send_announcements_phone: false,
     is_organizer: false,
