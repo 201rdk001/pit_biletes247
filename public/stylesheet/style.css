@@ -19,7 +19,31 @@ header {
   justify-content: space-between;
   padding-left: 4em;
   padding-right: 4em;
-    box-shadow: 0 0 8px #444;
+  box-shadow: 0 0 8px #444;
+}
+
+header > *:first-child {
+  width: 100px;
+}
+
+header > *:last-child {
+  width: 100px;
+  white-space: nowrap;
+}
+
+header > *:last-child > div {
+  float: right;
+}
+
+header > *:last-child a {
+  width: auto;
+}
+
+header a {
+  display: inline-block;
+  text-align: center;
+  width: 6em;
+  color: #333;
 }
 
 main {
@@ -52,10 +76,6 @@ section {
   padding-bottom: 1em;
 }
 
-header > div:nth-child(2) > a {
-  margin: 0 1em;
-}
-
 @media (max-width: 1200px) {
   aside {
     max-width: none;
@@ -82,6 +102,15 @@ header > div:nth-child(2) > a {
 }
 
 /* Events layout */
+#events-page {
+  flex-direction: column;
+}
+
+#events-page aside {
+  max-width: none;
+  padding-bottom: 1em;
+}
+
 #event-list {
   display: flex;
   flex-direction: column;

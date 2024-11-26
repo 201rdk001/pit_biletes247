@@ -45,7 +45,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   if (err.status == 403) {
-    res.locals.message ??= "Unauthorized access"
+    res.locals.message ??= "Neautorizēta piekļuve"
   }
 
   // render the error page
