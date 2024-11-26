@@ -90,7 +90,7 @@ class Database {
      * @returns {Promise<number>}
      */
     saveRow(table, row) {
-        return row.id ? updateRow(table, row) : insertRow(table, row);
+        return row.id ? this.updateRow(table, row) : this.insertRow(table, row);
     }
 }
 

@@ -1,3 +1,5 @@
+/// <reference path="../types.d.ts" />
+
 /**
  * User object
  * @typedef {Object} User
@@ -28,7 +30,7 @@ function saveUser(db, user) {
 
 /**
  * Find user by identifier
- * @param {SqliteDb} db
+ * @param {Database} db
  * @param {number | string} key
  * @returns {Promise<User>}
  */

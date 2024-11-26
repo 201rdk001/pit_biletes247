@@ -1,3 +1,5 @@
+/// <reference path="../types.d.ts" />
+
 /**
  * Event object
  * @typedef {Object} Event
