@@ -2,25 +2,7 @@ var express = require('express');
 var asyncHn = require('express-async-handler');
 var { loadUpcomingEvents } = require("../models/event");
 var router = express.Router();
-
-// Auth check
-router.use((req, res, next) => {
-    const user = req.session.user;
-
-    if (!user) {
-        next(403);
-        return;
-    }
-
-    if (user.name && user.surname) {
-        res.locals.name = `${user.name} ${user.surname}`;
-    }
-    else {
-        res.locals.name = user.username;
-    }
-    
-    next();
-});
+router.use(require('../auth'));
 
 /* GET event list page. */
 router.get('/', asyncHn(async function(req, res, next) {
