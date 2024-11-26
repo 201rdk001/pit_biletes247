@@ -39,11 +39,20 @@ form {
     gap: 1rem;
 }
 
-.pogas button:first-child {
+.pogas .btn:first-child {
     margin-top: 0;
 }
 
-.pogas button {
+.btn {
+    background-color: buttonface;
+    border-color: buttonborder;
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.pogas .btn {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -59,12 +68,7 @@ form {
     text-align: center;
 }
 
-.pogas button a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.pogas button:hover {
+.pogas .btn:hover {
     background-color: #0056b3;
 }
 
