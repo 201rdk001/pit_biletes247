@@ -8,62 +8,70 @@
 </head>
 <body>
     <div class="form-container" id="payment-type">
-        <div class="ticket-count">
-            <label>Biļešu skaits:</label>
-
-            <!--TODO: make the buttons do something-->
-            <button onClick="changeTicketCount(1)"><img src="assets\misc\triangle_up.png" alt="+"></button>
-            <input type="number" id="ticket-count" value="1" readonly>
-            <button onClick="changeTicketCount(-1)"><img src="assets\misc\triangle_down.png" alt="-"></button>
-
-            <!--TODO: make the price do it's thing
-                    also maybe if more than 1 ticket bought display
-                    single ticket price * the amount of tickets like so:
-                    Cena: € 6.59 x 3
-                    Total: 19.77
-                    that's optional though-->
-            <div class="price">
-                <label id="single-ticket-price">Cena: € 6.59 ×&nbsp</label>
-                <label id="ticket-count-calculation">1</label>
-                <label>&nbsp=&nbsp</label>
-                <label class="price-label" id="price">€ 6.59</label>
+        <div class="payment-form" id="payment-form" style="display: block">
+            <div class="ticket-count">
+                <label>Biļešu skaits:</label>
+    
+                <!--TODO: make the buttons do something-->
+                <button onClick="changeTicketCount(1)"><img src="assets\misc\triangle_up.png" alt="+"></button>
+                <input type="number" id="ticket-count" value="1" readonly>
+                <button onClick="changeTicketCount(-1)"><img src="assets\misc\triangle_down.png" alt="-"></button>
+    
+                <!--TODO: make the price do it's thing
+                        also maybe if more than 1 ticket bought display
+                        single ticket price * the amount of tickets like so:
+                        Cena: € 6.59 x 3
+                        Total: 19.77
+                        that's optional though-->
+                <div class="price">
+                    <label id="single-ticket-price">Cena: € 6.59 ×&nbsp</label>
+                    <label id="ticket-count-calculation">1</label>
+                    <label>&nbsp=&nbsp</label>
+                    <label class="price-label" id="price">€ 6.59</label>
+                </div>
+            </div>
+            <label style="padding-top: 0px">Pieejamo biļešu skaits: <b>7</b></label>
+            <div class="select-payment-method">
+                <label>Maksājuma veids:</label>
+                <input type="radio" name="payment-method" id="internetbank" onclick="showInternetBanks()" value="internetbank" checked> Internetbanka
+                <br>
+                <input type="radio" name="payment-method" id="card" onclick="showCardForm()" value="card"> Bankas karte
+            </div>
+            <div class="internetbanks" id="internetbank-form" style="display: block">
+    
+                <!--TODO: Make it so that whenever you press on a bank you get redirected somewhere
+                not necesserily the actual buying page, but like maybe the banks home page or something-->
+                <img src="assets\banks\swedbank_logo.png" alt="Swedbank">
+                <img src="assets\banks\SEB_logo.jpg" alt="SEB">
+                <img src="assets\banks\citadele_logo.png" alt="Citadele">
+                <img src="assets\banks\luminor_logo.jpg" alt="Luminor">
+            </div>
+            
+            <div class="card-info" id="card-form" style="display: none">
+                <div class="card-info">
+                    <label>Kartes numurs</label>
+                    <input id="card-number" placeholder="xxxx xxxx xxxx xxxx" type="text" maxlength="19">
+    
+                    <label>CVV</label>
+                    <input id="card-cvv" placeholder="xxx" type="text" maxlength="3">
+    
+                    <label>Derīguma termiņš</label>
+                    <input id="card-exp-date"  placeholder="07/27" type="text" maxlength="5">
+    
+                    <label>Vārds uz kartes</label>
+                    <input id="card-name" placeholder="John Maliszewski" type="text">
+                </div>
+    
+                <!--TODO: Make the button look better-->
+                <button class="center buy-button" id="buy-button" onclick="buyButton()">Pirkt</button>
+                
             </div>
         </div>
-        <label style="padding-top: 0px">Pieejamo biļešu skaits: <b>7</b></label>
-        <div class="select-payment-method">
-            <label>Maksājuma veids:</label>
-            <input type="radio" name="payment-method" id="internetbank" onclick="showInternetBanks()" value="internetbank" checked> Internetbanka
-            <br>
-            <input type="radio" name="payment-method" id="card" onclick="showCardForm()" value="card"> Bankas karte
-        </div>
-        <div class="internetbanks" id="internetbank-form" style="display: block">
-
-            <!--TODO: Make it so that whenever you press on a bank you get redirected somewhere
-            not necesserily the actual buying page, but like maybe the banks home page or something-->
-            <img src="assets\banks\swedbank_logo.png" alt="Swedbank">
-            <img src="assets\banks\SEB_logo.jpg" alt="SEB">
-            <img src="assets\banks\citadele_logo.png" alt="Citadele">
-            <img src="assets\banks\luminor_logo.jpg" alt="Luminor">
-        </div>
-        
-        <div class="card-info" id="card-form" style="display: none">
-            <div class="card-info">
-                <label>Kartes numurs</label>
-                <input id="card-number" placeholder="xxxx xxxx xxxx xxxx" type="text" maxlength="19">
-
-                <label>CVV</label>
-                <input id="card-cvv" placeholder="xxx" type="text" maxlength="3">
-
-                <label>Derīguma termiņš</label>
-                <input id="card-exp-date"  placeholder="07/27" type="text" maxlength="5">
-
-                <label>Vārds uz kartes</label>
-                <input id="card-name" placeholder="John Maliszewski" type="text">
-            </div>
-
-            <!--TODO: Make the button look better-->
-            <button class="center buy-button" id="buy-button" onclick="buyButton()">Pirkt</button>
-
+        <div class="payment-accepted-form" id="payment-accepted-form" style="display: none">
+            <p>Paldies par pirkumu! Biļetes nosūtītas uz e-pastu</p>
+            <button class="center buy-button" id="buy-button" onclick="returnToMainPage()" 
+                style="width: 150px; font-weight: normal; height: 40px; font-size: 14px">
+                Atgirezties galvenajā lapā</button>
         </div>
     </div>
 </body>
@@ -93,13 +101,13 @@
             alert("Kartes dati ievadīti nepareizi")
             return;
         }
-        alert("Paldies par pirkumu\nJūsu biļetes tika nosūtītas uz e-pastu")
 
-        // Vajadzētu redirectot uz kādu citu lapu varbūt šeit
-        document.getElementById('card-number').value = '';
-        document.getElementById('card-cvv').value = '';
-        document.getElementById('card-exp-date').value = '';
-        document.getElementById('card-name').value = '';
+        document.getElementById('payment-accepted-form').style.display = 'block';
+        document.getElementById('payment-form').style.display = 'none';
+    }
+
+    function returnToMainPage() {
+        location.href = "index.html"
     }
 
     function changeTicketCount(amount) {

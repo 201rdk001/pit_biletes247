@@ -111,6 +111,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 } 
+
 .buy-button {
     margin-top: 25px;
     height: 30px;
@@ -119,4 +120,7 @@
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
+    border: none;
+    background-color: #3181CB;
+    color: white;
 }
