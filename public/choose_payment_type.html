@@ -1,7 +1,7 @@
 <html lang="lv">
 <head>
-    <link rel="stylesheet" href="stylesheet\payment_type_stylesheet.css">
     <link rel="stylesheet" href="stylesheet\style.css">
+    <link rel="stylesheet" href="stylesheet\payment_type_stylesheet.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iegādāties biļetes</title>
@@ -12,17 +12,10 @@
             <div class="ticket-count">
                 <label>Biļešu skaits:</label>
     
-                <!--TODO: make the buttons do something-->
                 <button onClick="changeTicketCount(1)"><img src="assets\misc\triangle_up.png" alt="+"></button>
                 <input type="number" id="ticket-count" value="1" readonly>
                 <button onClick="changeTicketCount(-1)"><img src="assets\misc\triangle_down.png" alt="-"></button>
-    
-                <!--TODO: make the price do it's thing
-                        also maybe if more than 1 ticket bought display
-                        single ticket price * the amount of tickets like so:
-                        Cena: € 6.59 x 3
-                        Total: 19.77
-                        that's optional though-->
+
                 <div class="price">
                     <label id="single-ticket-price">Cena: € 6.59 ×&nbsp</label>
                     <label id="ticket-count-calculation">1</label>
@@ -62,7 +55,6 @@
                     <input id="card-name" placeholder="John Maliszewski" type="text">
                 </div>
     
-                <!--TODO: Make the button look better-->
                 <button class="center buy-button" id="buy-button" onclick="buyButton()">Pirkt</button>
                 
             </div>
