@@ -1,6 +1,6 @@
 /* globālais konteineris */
 html, body {
-    background-color: #749CA8;
+    background-color: #dcdcdc;
 }
 
 body button:hover {
@@ -8,13 +8,13 @@ body button:hover {
 }
 
 .form-container {
-    background-color: #749CA8;
+    background-color: #dcdcdc;
     padding: 50px;
     padding-left: 40px;
     padding-right: 30px;
     border-radius: 8px;
     margin: auto;
-    color: white;
+    color: black;
     width: 800px
 }
 
@@ -60,7 +60,7 @@ body button:hover {
     margin-left: auto;
     text-align: right;
     display: flex;
-    color: white;
+    color: black;
     font-size: 16px;
 }
 
