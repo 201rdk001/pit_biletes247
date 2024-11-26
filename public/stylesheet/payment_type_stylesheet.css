@@ -1,7 +1,15 @@
 /* globālais konteineris */
+html, body {
+    background-color: #749CA8;
+}
+
+body button:hover {
+    background-color: #173c5f;
+}
+
 .form-container {
-    background-color: #708090;
-    padding: 20px;
+    background-color: #749CA8;
+    padding: 50px;
     padding-left: 40px;
     padding-right: 30px;
     border-radius: 8px;
