@@ -36,7 +36,6 @@ class Database {
     findRow(table, key, value, fields) {
         fields ??= ["*"];
         return new Promise((resolve, reject) => {
-            console.log(`SELECT ${fields.join(", ")} FROM ${table} WHERE ${key} = ?`);
             this.sqlite.get(
                 `SELECT ${fields.join(", ")} FROM ${table} WHERE ${key} = ?`, [value],
                 (err, row) => err ? reject(err) : resolve(row)

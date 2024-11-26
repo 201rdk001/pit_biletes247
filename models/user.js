@@ -39,7 +39,6 @@ function loadUser(db, key) {
         return db.findRow("users", "id", key);
     }
     else if (typeof key == "string") {
-        console.log(key);
         return db.findRow("users", "username", key);
     }
 }
