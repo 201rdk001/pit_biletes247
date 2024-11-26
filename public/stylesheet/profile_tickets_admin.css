@@ -1,3 +1,14 @@
+
+html, body {
+  background-color: cadetblue;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  align-items: center;
+  background-color: #eee;
+  display: flex;}
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -290,7 +301,6 @@ button {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(47, 107, 127, 0.674);
   border: 1px solid #ccc;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 100%;
