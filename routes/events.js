@@ -1,12 +1,11 @@
 var express = require('express');
 var asyncHn = require('express-async-handler');
-var db = require("../database");
 var { loadUpcomingEvents } = require("../models/event");
 var router = express.Router();
 
 /* GET event list page. */
-router.get('/', asyncHn(async function(req, res, next) {
-    const events = await loadUpcomingEvents(db.get(res));
+router.get('/', asyncHn(async function(req, res) {
+    const events = await loadUpcomingEvents(req.app.db);
     events.forEach(event => {
         const eventTime = new Date(event.event_time * 1000);
         event.event_time = eventTime.toLocaleString("lv-LV", {

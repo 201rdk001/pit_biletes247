@@ -1,5 +1,3 @@
-const database = require("../database");
-
 /**
  * Event object
  * @typedef {Object} Event
@@ -31,16 +29,16 @@ const database = require("../database");
  * @property {string} address
  * @property {number} duration
  * @property {number?} age_limit
- */ 
+ */
 
 /**
  * Get all events in database
- * @param {import("sqlite3").Database} db
+ * @param {Database} db
  * @returns {Promise<Event[]>}
  */
 function loadEvents(db) {
     return new Promise((resolve, reject) => {
-        db.all(
+        db.sqlite.all(
             `SELECT * FROM "events";`,
             (err, rows) => err ? reject(err) : resolve(rows)
         );
@@ -49,12 +47,12 @@ function loadEvents(db) {
 
 /**
  * Get the soonest upcoming events (max 30)
- * @param {import("sqlite3").Database} db
+ * @param {Database} db
  * @returns {Promise<EventTicket[]>}
  */
 function loadUpcomingEvents(db) {
     return new Promise((resolve, reject) => {
-        db.all(
+        db.sqlite.all(
             `SELECT T.*, E.name, E.place, E.address, E.duration, E.age_limit
             FROM tickets T
             JOIN events E ON E.id = T.event_id

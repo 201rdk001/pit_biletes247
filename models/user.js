@@ -1,5 +1,3 @@
-const database = require("../database");
-
 /**
  * User object
  * @typedef {Object} User
@@ -20,39 +18,28 @@ const database = require("../database");
 
 /**
  * Save user to database
- * @param {import("sqlite3").Database} db 
+ * @param {Database} db
  * @param {User} user
- * @returns {Promise<boolean>}
+ * @returns {Promise<number>}
  */
 function saveUser(db, user) {
-    return database.saveRow(db, "users", user);
+    return db.saveRow("users", user).then(id => user.id = id);
 }
 
 /**
  * Find user by identifier
- * @param {import("sqlite3").Database} db 
- * @param {number} id
+ * @param {SqliteDb} db
+ * @param {number | string} key
  * @returns {Promise<User>}
  */
-function loadUser(db, id) {
-    return database.findRow(db, "users", id);
-
+function loadUser(db, key) {
+    if (typeof key == "number") {
+        return db.findRow("users", "id", key);
+    }
+    else if (typeof key == "string") {
+        console.log(key);
+        return db.findRow("users", "username", key);
+    }
 }
 
-/**
- * Authentify user with password
- * @param {import("sqlite3").Database} db 
- * @param {number} id
- * @returns {Promise<boolean>}
- */
-function checkUserPassword(db, id, password) {
-    return new Promise((resolve, reject) => {
-        db.get(
-            `SELECT (password = ?) FROM users WHERE id = ?;`
-            [password, id],
-            (err, row) => err ? reject(err) : resolve(row.password_matches == 1)
-        );
-    });
-}
-
-module.exports = { saveUser, loadUser, checkUserPassword };
+module.exports = { saveUser, loadUser };
