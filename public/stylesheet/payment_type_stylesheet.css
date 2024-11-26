@@ -1,0 +1,126 @@
+/* globālais konteineris */
+.form-container {
+    background-color: #708090;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 30px;
+    border-radius: 8px;
+    margin: auto;
+    color: white;
+    width: 800px
+}
+
+.form-container label{
+    display:block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* ----------- Biļešu skaits -------------*/
+.ticket-count {
+    display: flex;
+    align-items: center;
+}
+
+.ticket-count button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border: none;
+    background-color: #3181CB;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ticket-count button img{
+    width:18px;
+    height:18px;
+}
+
+.ticket-count input {
+    width: 50px;
+    height: 35px;
+    margin-left: 10px;
+}
+
+.price {
+    margin-left: auto;
+    text-align: right;
+    display: flex;
+    color: white;
+    font-size: 16px;
+}
+
+.price-label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* Noņem iebūvētās bultiņas, kur <input type=number>, jo tās te nav nepieciešamas */
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
+
+ /* Dara to pašu, tikai priekš firefox */
+ input[type="number"] {
+     -moz-appearance: textfield;
+ }
+
+
+/* ---------- Maksājuma veids ---------------- */
+.select-payment-method label {
+    padding-bottom: 5px;
+}
+
+.select-payment-method input {
+    margin-bottom: 5px;
+}
+
+
+/* -------------- Banku logo --------------- */
+.internetbanks {
+    margin-top: 20px;
+}
+
+.internetbanks img {
+    width: 70px;
+    height: 40;
+    cursor: pointer;
+}
+
+/* -------------- Kartes detaļas --------------- */
+
+.card-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 15px
+}
+
+.center {
+    margin: 0px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
+
+.buy-button {
+    margin-top: 25px;
+    height: 30px;
+    width: 90px;
+    font-size: 16;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background-color: #3181CB;
+    color: white;
+}

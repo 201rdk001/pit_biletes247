@@ -1,0 +1,169 @@
+<html lang="lv">
+<head>
+    <link rel="stylesheet" href="stylesheet\payment_type_stylesheet.css">
+    <link rel="stylesheet" href="stylesheet\style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iegādāties biļetes</title>
+</head>
+<body>
+    <div class="form-container" id="payment-type">
+        <div class="payment-form" id="payment-form" style="display: block">
+            <div class="ticket-count">
+                <label>Biļešu skaits:</label>
+    
+                <!--TODO: make the buttons do something-->
+                <button onClick="changeTicketCount(1)"><img src="assets\misc\triangle_up.png" alt="+"></button>
+                <input type="number" id="ticket-count" value="1" readonly>
+                <button onClick="changeTicketCount(-1)"><img src="assets\misc\triangle_down.png" alt="-"></button>
+    
+                <!--TODO: make the price do it's thing
+                        also maybe if more than 1 ticket bought display
+                        single ticket price * the amount of tickets like so:
+                        Cena: € 6.59 x 3
+                        Total: 19.77
+                        that's optional though-->
+                <div class="price">
+                    <label id="single-ticket-price">Cena: € 6.59 ×&nbsp</label>
+                    <label id="ticket-count-calculation">1</label>
+                    <label>&nbsp=&nbsp</label>
+                    <label class="price-label" id="price">€ 6.59</label>
+                </div>
+            </div>
+            <label style="padding-top: 0px">Pieejamo biļešu skaits: <b>7</b></label>
+            <div class="select-payment-method">
+                <label>Maksājuma veids:</label>
+                <input type="radio" name="payment-method" id="internetbank" onclick="showInternetBanks()" value="internetbank" checked> Internetbanka
+                <br>
+                <input type="radio" name="payment-method" id="card" onclick="showCardForm()" value="card"> Bankas karte
+            </div>
+            <div class="internetbanks" id="internetbank-form" style="display: block">
+    
+                <!--TODO: Make it so that whenever you press on a bank you get redirected somewhere
+                not necesserily the actual buying page, but like maybe the banks home page or something-->
+                <img src="assets\banks\swedbank_logo.png" alt="Swedbank">
+                <img src="assets\banks\SEB_logo.jpg" alt="SEB">
+                <img src="assets\banks\citadele_logo.png" alt="Citadele">
+                <img src="assets\banks\luminor_logo.jpg" alt="Luminor">
+            </div>
+            
+            <div class="card-info" id="card-form" style="display: none">
+                <div class="card-info">
+                    <label>Kartes numurs</label>
+                    <input id="card-number" placeholder="xxxx xxxx xxxx xxxx" type="text" maxlength="19">
+    
+                    <label>CVV</label>
+                    <input id="card-cvv" placeholder="xxx" type="text" maxlength="3">
+    
+                    <label>Derīguma termiņš</label>
+                    <input id="card-exp-date"  placeholder="07/27" type="text" maxlength="5">
+    
+                    <label>Vārds uz kartes</label>
+                    <input id="card-name" placeholder="John Maliszewski" type="text">
+                </div>
+    
+                <!--TODO: Make the button look better-->
+                <button class="center buy-button" id="buy-button" onclick="buyButton()">Pirkt</button>
+                
+            </div>
+        </div>
+        <div class="payment-accepted-form" id="payment-accepted-form" style="display: none">
+            <p>Paldies par pirkumu! Biļetes nosūtītas uz e-pastu</p>
+            <button class="center buy-button" id="buy-button" onclick="returnToMainPage()" 
+                style="width: 150px; font-weight: normal; height: 40px; font-size: 14px">
+                Atgirezties galvenajā lapā</button>
+        </div>
+    </div>
+</body>
+<script>
+
+    // Funkcijas priekš internetbankas un bankas kartes skatu mainīšanas
+    function showInternetBanks() {
+        document.getElementById('card-form').style.display = 'none';
+        document.getElementById('internetbank-form').style.display = 'block';
+    }
+    
+    function showCardForm() {
+        document.getElementById('card-form').style.display = 'block';
+        document.getElementById('internetbank-form').style.display = 'none';
+    }
+
+    /* 
+    TODO:
+        1. Make it so that something actually happens after pressing buy like redirecting to
+            another page with the info that the tickets were bought and stuff
+    */
+
+    // Apraksta kas notiek, ja nospiež "Pirkt"
+    function buyButton() {
+        // Pārbauda, vai kartes dati pareizi, ja nav - ziņojums un beidzas funkcijas tālāka darbība
+        if (!checkCardDetailValidity()) {
+            alert("Kartes dati ievadīti nepareizi")
+            return;
+        }
+
+        document.getElementById('payment-accepted-form').style.display = 'block';
+        document.getElementById('payment-form').style.display = 'none';
+    }
+
+    function returnToMainPage() {
+        location.href = "index.html"
+    }
+
+    function changeTicketCount(amount) {
+        let ticketCount = parseInt(document.getElementById('ticket-count').value);
+        let availableSeatAmount = 7;
+
+        // Biļešu skaitam ir jābūt vismaz 1, bet ne vairāk kā pieejamo biļešu skaitam
+        ticketCount = Math.max(1, ticketCount + amount);
+        ticketCount = Math.min(ticketCount, availableSeatAmount);
+        document.getElementById('ticket-count').value = ticketCount;
+        document.getElementById('ticket-count-calculation').textContent = ticketCount;
+
+        // Cenas atjaunošana
+        let pricePerTicket = 6.59; // If later on we will need a pricePerTicket on an event basis, will fix
+        let totalPrice = (ticketCount * pricePerTicket).toFixed(2); // computers are bad at multiplying floats sometimes
+    
+        document.getElementById('price').textContent = "€ " + totalPrice;
+    }
+
+
+    function checkCardDetailValidity() {
+        let cardNumber = document.getElementById('card-number').value;
+        let cardCVV = document.getElementById('card-cvv').value;
+        let cardExpDate = document.getElementById('card-exp-date').value;
+        let cardName = document.getElementById('card-name').value;
+
+        // Internets saka, ka var būt no 15 līdz 19 šeit
+        if (cardNumber.length < 15 || cardNumber.length > 19) {
+            return false;
+        }
+        
+        // Pārbauda, vai kartes numurs satur kādu citu simbolu, kurš nav cipars
+        if (!/^\d+$/.test(cardNumber)) {
+            return false;
+        }
+        
+        if (cardCVV.length != 3) {
+            return false;
+        }
+
+        if (!/^\d+$/.test(cardCVV)) {
+            return false;
+        }
+        
+        // TODO: Check date better
+        if (cardExpDate.length != 5 || cardExpDate.charAt(2) != '/') {
+            return false;
+        }
+
+
+        if (cardName.trim() === "") {
+            return false;
+        }
+        
+        return true;
+    }
+
+</script>
+</html>

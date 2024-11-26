@@ -1,0 +1,70 @@
+/* globālais konteineris */
+.form-container {
+    background-color: #708090;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 30px;
+    border-radius: 8px;
+    margin: auto;
+    color: white;
+}
+
+.form-container label{
+    display:block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+/* I have no idea how this section works as it should, but it does, so let's keep it that way */
+.image-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 15px;
+    margin-left: 20%;
+}
+
+.event-image {
+    width: 100%;
+    margin: auto;
+}
+
+.main-image {
+    width: 100%;
+}
+
+.secondary-images {
+    width: 100%;
+}
+
+.secondary-images img {
+    width: 50%;
+}
+
+.ticket-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 15px;
+    margin-left: 10%;
+    margin-right:10%;
+}
+
+.buy-button {
+    margin-left: auto;
+}
+
+.buy-button button{
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    margin-left: 10px;
+    border: none;
+    background-color: #3181CB;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20;
+}
