@@ -4,6 +4,14 @@
         <form action="/events">
             <input type="text" name="search" placeholder="Nosaukums">
             <input type="submit" class="search-icon-btn" value="">
+
+            <input type="checkbox" name="my_events">
+            <label for="my_events">Mani pasākumi</label>
+
+            {{#if is_organizer}}
+            <input type="checkbox" name="organizer_events" {{organizer_view}}>
+            <label for="organizer_events">Mani organizētie pasākumi</label>
+            {{/if}}
         </form>
     </aside>
     <section>
@@ -18,12 +26,16 @@
                         <h3>{{this.name}}</h3>
                         <p>{{this.place}} ({{this.address}})</p>
                         <p>{{this.event_time}}</p>
-                        {{!-- <p>27. oktobrī, plkst. 22:00</p> --}}
                     </div>
                     <div>
                         <button>Apskatīt</button>
+
+                        {{#unless ../organizer_view}}
                         <button>Iepirkt biļeti</button>
                         <span>Cena: {{this.price}} €</span>
+                        {{else}}
+                        <button>Rediģēt</button>
+                        {{/unless}}
                     </div>
                 </div>
             {{/each}}
