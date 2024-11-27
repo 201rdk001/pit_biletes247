@@ -1,6 +1,6 @@
 var express = require('express');
 var asyncHn = require('express-async-handler');
-var { loadUpcomingEvents, loadOrganizerEvents  } = require("../models/event");
+var { loadEvent, loadUpcomingEvents, loadOrganizerEvents  } = require("../models/event");
 var router = express.Router();
 router.use(require('../auth'));
 
@@ -37,6 +37,43 @@ router.get('/', asyncHn(async function(req, res, next) {
     
     res.locals.is_organizer = req.session.user.is_organizer;
     res.render('events', { events });
+}));
+
+router.get('/:eventId', asyncHn(async function(req, res, next) {
+    const event = await loadEvent(req.app.db, req.params.eventId);
+    const is_organizer = req.session.user.id === event.organizer_id;
+    const ticket = await req.app.db.findRow("tickets", "event_id", event.id);
+    const ticket_price = ticket.price;
+    const ticket_count = ticket.count;
+    const event_time = (new Date(ticket.event_time * 1000)).toLocaleString("lv-LV", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        weekday: "long"
+    });
+
+    res.render('event_view', {
+        is_organizer,
+        ...event,
+        event_id: event.id,
+        event_time,
+        ticket_price,
+        ticket_count
+    });
+}));
+
+router.get('/:eventId/edit', asyncHn(async function(req, res, next) {
+    res.render('event_edit');
+}));
+
+router.get('/:eventId/edit/tickets', asyncHn(async function(req, res, next) {
+    res.render('event_tickets');
+}));
+
+router.get('/:eventId/purchase', asyncHn(async function(req, res, next) {
+    res.render('event_purchase');
 }));
 
 module.exports = router;

@@ -1,20 +1,17 @@
-<html lang="lv">
-<head>
-    <link rel="stylesheet" href="stylesheet/style.css">
-    <link rel="stylesheet" href="stylesheet/payment_type_stylesheet.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iegādāties biļetes</title>
-</head>
-<body>
-    <div class="form-container" id="payment-type">
+
+{{#contentFor "styles"}}
+    <link rel="stylesheet" href="/stylesheet/payment_type_stylesheet.css">
+{{/contentFor}}
+
+<main>
+    <section class="form-container" id="payment-type">
         <div class="payment-form" id="payment-form" style="display: block">
             <div class="ticket-count">
                 <label>Biļešu skaits:</label>
     
-                <button onClick="changeTicketCount(1)"><img src="assets/misc/triangle_up.png" alt="+"></button>
+                <button onClick="changeTicketCount(1)"><img src="/assets/misc/triangle_up.png" alt="+"></button>
                 <input type="number" id="ticket-count" value="1" readonly>
-                <button onClick="changeTicketCount(-1)"><img src="assets/misc/triangle_down.png" alt="-"></button>
+                <button onClick="changeTicketCount(-1)"><img src="/assets/misc/triangle_down.png" alt="-"></button>
 
                 <div class="price">
                     <label id="single-ticket-price">Cena: € 6.59 ×&nbsp</label>
@@ -34,10 +31,10 @@
     
                 <!--TODO: Make it so that whenever you press on a bank you get redirected somewhere
                 not necesserily the actual buying page, but like maybe the banks home page or something-->
-                <img src="assets/banks/swedbank_logo.png" alt="Swedbank">
-                <img src="assets/banks/SEB_logo.jpg" alt="SEB">
-                <img src="assets/banks/citadele_logo.png" alt="Citadele">
-                <img src="assets/banks/luminor_logo.jpg" alt="Luminor">
+                <img src="/assets/banks/swedbank_logo.png" alt="Swedbank">
+                <img src="/assets/banks/seb_logo.jpg" alt="SEB">
+                <img src="/assets/banks/citadele_logo.png" alt="Citadele">
+                <img src="/assets/banks/luminor_logo.jpg" alt="Luminor">
             </div>
             
             <div class="card-info" id="card-form" style="display: none">
@@ -65,8 +62,9 @@
                 style="width: 150px; font-weight: normal; height: 40px; font-size: 14px">
                 Atgriezties galvenajā lapā</button>
         </div>
-    </div>
-</body>
+    </section>
+</main>
+
 <script>
 
     // Funkcijas priekš internetbankas un bankas kartes skatu mainīšanas
@@ -99,7 +97,7 @@
     }
 
     function returnToMainPage() {
-        location.href = "index.html"
+        location.href = "/"
     }
 
     function changeTicketCount(amount) {
@@ -158,4 +156,3 @@
     }
 
 </script>
-</html>

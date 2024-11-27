@@ -5,12 +5,9 @@
             <input type="text" name="search" placeholder="Nosaukums">
             <input type="submit" class="search-icon-btn" value="">
 
-            <input type="checkbox" name="my_events">
-            <label for="my_events">Mani pasākumi</label>
-
             {{#if is_organizer}}
             <input type="checkbox" name="organizer_events" {{organizer_view}}>
-            <label for="organizer_events">Mani organizētie pasākumi</label>
+            <label for="organizer_events">Organizētāja skats</label>
             {{/if}}
         </form>
     </aside>
@@ -28,13 +25,14 @@
                         <p>{{this.event_time}}</p>
                     </div>
                     <div>
-                        <button>Apskatīt</button>
+                        <a class="btn" href="/events/{{this.event_id}}/">Apskatīt</a>
+                        {{!-- <button>Apskatīt</button> --}}
 
                         {{#unless ../organizer_view}}
-                        <button>Iepirkt biļeti</button>
+                        <a class="btn" href="/events/{{this.event_id}}/purchase">Iepirkt biļeti</a>
                         <span>Cena: {{this.price}} €</span>
                         {{else}}
-                        <button>Rediģēt</button>
+                        <a class="btn" href="/events/{{this.event_id}}/edit">Rediģēt</a>
                         {{/unless}}
                     </div>
                 </div>

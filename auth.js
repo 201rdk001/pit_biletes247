@@ -19,5 +19,6 @@ module.exports = (req, res, next) => {
         res.locals.name = user.username;
     }
     
+    res.locals.is_admin = user.is_admin;
     next();
 }

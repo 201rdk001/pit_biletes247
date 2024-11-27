@@ -4,6 +4,7 @@
  * Event object
  * @typedef {Object} Event
  * @property {number} id
+ * @property {number} organizer_id
  * @property {string} name
  * @property {string} type
  * @property {string} description
@@ -32,6 +33,16 @@
  * @property {number} duration
  * @property {number?} age_limit
  */
+
+/**
+ * Find user by identifier
+ * @param {Database} db
+ * @param {number} key
+ * @returns {Promise<Event>}
+ */
+function loadEvent(db, key) {
+    return db.findRow("events", "id", key);
+}
 
 /**
  * Get all events in database
@@ -79,6 +90,6 @@ function loadOrganizerEvents(db, organizerId) {
     });
 }
 
-module.exports = { loadEvents, loadUpcomingEvents, loadOrganizerEvents };
+module.exports = { loadEvent, loadEvents, loadUpcomingEvents, loadOrganizerEvents };
 
 

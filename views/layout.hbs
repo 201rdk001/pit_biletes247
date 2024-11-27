@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="lv">
 
 <head>
     <title>Biletes 24/7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheet/style.css' />
     {{{block "styles"}}}
 </head>
@@ -13,6 +15,7 @@
         <div>
             <a href="/events">Pasākumi</a>
             <a href="/profile">Profils</a>
+            {{#if is_admin}} <a href="/admin">Admin</a> {{/if}}
         </div>
         
         {{#if name}}

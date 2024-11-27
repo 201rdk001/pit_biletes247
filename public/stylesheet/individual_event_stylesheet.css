@@ -1,5 +1,6 @@
 /* globālais konteineris */
-html, body {
+section {
+    margin-top: 2em;
     background-color: #dcdcdc;
 }
 
@@ -13,7 +14,6 @@ body button:hover {
     padding-left: 10%;
     padding-right: 10%;
     border-radius: 8px;
-    margin: auto;
     color: black;
 }
 
@@ -23,31 +23,30 @@ body button:hover {
     padding-bottom: 5px;
 }
 
-
-/* I have no idea how this section works as it should, but it does, so let's keep it that way */
 .image-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding-top: 15px;
-    margin-left: 20%;
+    display: flex;
+    width: 60%;
+    margin: 16px auto;
 }
 
-.event-image {
-    width: 100%;
-    margin: auto;
+.image-section div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.image-section div img {
+    max-width: 100%;
 }
 
 .main-image {
-    width: 100%;
+    flex: 1 1 67%;
+    padding: 8px;
 }
 
 .secondary-images {
-    width: 100%;
-}
-
-.secondary-images img {
-    width: 50%;
+    flex: 1 1 33%;
+    flex-direction: column;
 }
 
 .ticket-details {
@@ -63,16 +62,17 @@ body button:hover {
     margin-left: auto;
 }
 
-.buy-button button{
-    justify-content: center;
-    align-items: center;
+.buy-button .btn {
     width: 150px;
     height: 50px;
     margin-left: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     border: none;
+    border-radius: 4px;
     background-color: #3181CB;
     color: white;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 20;
+    font-weight: bold;
 }

@@ -14,7 +14,12 @@ const msgTable = {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.redirect("login");
+  if (req.session.user) {
+    res.redirect("events");
+  }
+  else {
+    res.redirect("login");
+  }
 });
 
 /* GET login page. */

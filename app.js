@@ -9,6 +9,7 @@ var Database = require('./database');
 
 var indexRouter = require('./routes/index');
 var profileRouter = require('./routes/profile');
+var adminRouter = require('./routes/admin');
 var eventsRouter = require('./routes/events');
 
 var app = express();
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
+app.use('/admin', adminRouter);
 app.use('/events', eventsRouter);
 
 // catch 404 and forward to error handler

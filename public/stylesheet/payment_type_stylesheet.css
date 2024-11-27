@@ -1,5 +1,6 @@
 /* globālais konteineris */
-html, body {
+section {
+    margin-top: 2em;
     background-color: #dcdcdc;
 }
 
@@ -13,7 +14,6 @@ body button:hover {
     padding-left: 40px;
     padding-right: 30px;
     border-radius: 8px;
-    margin: auto;
     color: black;
     width: 800px
 }

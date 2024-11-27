@@ -19,3 +19,8 @@ npm run start
 ```
 
 Vietnei var pieslēgties no tīmekļa pārlūkprogrammas caur šo addresi: `http://localhost:3000/` vai `http://127.0.0.1:3000/`
+
+Testa lietotāji:  
+* Admins un organizētājs - lietotājvārds: aozolina001, parole: parole
+* Organizētājs - lietotājvārds: akrumins002, parole: parole
+* Lietotājs - lietotājvārds: aozolina003, parole: parole
