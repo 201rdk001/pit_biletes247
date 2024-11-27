@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var hbs = require('express-hbs');
 var Database = require('./database');
 
 var indexRouter = require('./routes/index');
@@ -13,8 +14,11 @@ var eventsRouter = require('./routes/events');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.engine('hbs', hbs.express4({
+  defaultLayout: "views/layout.hbs"
+}));
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.db = Database.open();
 
