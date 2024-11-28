@@ -1,12 +1,20 @@
 /* globālais konteineris */
+section {
+    margin-top: 2em;
+    background-color: #dcdcdc;
+}
+
+body button:hover {
+    background-color: #173c5f;
+}
+
 .form-container {
-    background-color: #708090;
-    padding: 20px;
+    background-color: #dcdcdc;
+    padding: 50px;
     padding-left: 40px;
     padding-right: 30px;
     border-radius: 8px;
-    margin: auto;
-    color: white;
+    color: black;
     width: 800px
 }
 
@@ -52,7 +60,7 @@
     margin-left: auto;
     text-align: right;
     display: flex;
-    color: white;
+    color: black;
     font-size: 16px;
 }
 

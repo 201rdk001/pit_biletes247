@@ -17,6 +17,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "events" (
     "id" INTEGER NOT NULL,
+    "organizer_id" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "description" TEXT NOT NULL,
@@ -28,6 +29,7 @@ CREATE TABLE "events" (
     "is_approved" BOOLEAN,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY("id" AUTOINCREMENT)
+    FOREIGN KEY("organizer_id") REFERENCES "users"("id")
 );
 
 CREATE TABLE "tickets" (

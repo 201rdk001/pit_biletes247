@@ -11,32 +11,6 @@ function closeWindow(windowId) {
     window.classList.add('hidden'); // Hide the window by adding the 'hidden' class
 }
 
-// Wait for the DOM content to load
-document.addEventListener('DOMContentLoaded', function () {
-    // Open user profile window when profile button is clicked
-    document.getElementById('profileBtn').addEventListener('click', function () {
-        window.location.href = 'profils.html';
-    });
-
-    // Open tickets window when ticket button is clicked
-    document.getElementById('ticketBtn').addEventListener('click', function () {
-        window.location.href = 'bilesu_izveide.html';
-    });
-
-    document.getElementById('adminBtn').addEventListener('click', function () {
-        window.location.href = 'admin.html'; // Atver admin.html failu
-    });
-    });
-
-    // Close window when close button is clicked
-    document.querySelectorAll('.closeBtn').forEach(button => {
-        button.addEventListener('click', function () {
-            const window = button.closest('.window');
-            window.classList.add('hidden'); // Hide the closest window element
-        
-    });
-});
-
 //switch sections admin/user
 function showAdminSection(sectionId) {
     // Get all the admin content divs
@@ -83,14 +57,6 @@ window.addEventListener('load', function() {
 });
 
 // Add event listeners to buttons
-document.getElementById('btn-messages').addEventListener('click', function() {
-    showUserProfileSection('messages');
-});
-
-document.getElementById('btn-tickets-history').addEventListener('click', function() {
-    showUserProfileSection('tickets-history');
-});
-
 document.getElementById('btn-admin-users').addEventListener('click', function() {
     showAdminSection('admin-users');
 });

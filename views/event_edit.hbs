@@ -1,0 +1,52 @@
+{{#contentFor "styles"}}
+    <link rel="stylesheet" href="/stylesheet/profile_tickets_admin.css">
+{{/contentFor}}
+
+<main>
+    <div id="editEvent" class="window">
+        <h1 id="heading_tickets">Rediģēt pasākuma informāciju:</h1>
+        <div class="input-block">
+            <label for="Event">Nosaukums:</label>
+            <input type="text" id="name" placeholder="Nosaukums">
+        </div>
+
+        <div class="input-block">
+            <label for="Event">Veids:</label>
+            <select id="Event">
+                <option value="ev1">koncerts</option>
+                <option value="ev2">izstāde</option>
+                <option value="ev3">festivāls</option>
+                <option value="ev4">opera</option>
+                <option value="ev5">teātra izrāde</option>
+            </select>
+        </div>
+
+        <div class="input-block">
+            <label for="Event">Apraksts:</label>
+            <input type="text" id="apr" placeholder="Aprakts">
+        </div>
+
+
+        <div class="input-block">
+            <label for="Event">Norises vieta:</label>
+            <input type="text" id="apr" placeholder="Adrese">
+        </div>
+
+        <div class="input-block two-columns">
+            <div>
+                <label for="datums">Pasākuma norises laiks:</label>
+                <input type="date" id="datums" placeholder="Datums">
+            </div>
+            <div>
+                <label for="laiks">plkst.:</label>
+                <input type="time" id="laiks" placeholder="Laiks">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a class="btn" id="recall_create_tickets" href=".">Atcelt</a>
+            <a class="btn" id="create_tickets" onclick="alert('Nepabeigta funckija')">Saglabāt</a>
+            <a class="btn" id="create_tickets" href="edit/tickets">Pievienot biļetes</a>
+        </div>
+    </div>
+</main>

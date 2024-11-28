@@ -1,0 +1,39 @@
+{{#contentFor "styles"}}
+    <link rel="stylesheet" href="/stylesheet/individual_event_stylesheet.css">
+{{/contentFor}}
+
+<main>
+<section class="form-container" id="payment-type">
+    <h1 style="text-align: center; color: black">{{name}}</h1>
+    <div class="event-details">
+        <label>Norises vieta: <b>{{this.place}} ({{this.address}})</b></label>
+        <label>Pasākuma norises laiks: <b>{{event_time}}</b></label>
+        <label>Pasākuma veids: <b>{{type}}</b></label>
+    </div>
+    <h2 style="text-align: center; color: black">Pasākuma apraksts</h2>
+    <p>{{description}}</p>
+
+    <div class="image-section">
+        <div class="main-image">
+            <img class="event-image" src="/images/{{event_id}}.jpg">
+        </div>
+        <div class="secondary-images">
+            <img src="/assets/event/royalty-free-image2.jpg">
+            <img src="/assets/event/royalty-free-image3.jpg">
+        </div>
+    </div>
+    <div class="ticket-details">
+        <div>
+            <label>Biļetes cena: <b>€ {{ticket_price}}</b></label>
+            <label>Brīvu vietu skaits: <b>{{ticket_count}}</b></label>
+        </div>
+        <div class="buy-button">
+            <a class="btn" href="/events/{{event_id}}/purchase">Pirkt biļeti</a>
+
+            {{#if is_organizer}}
+                <a class="btn" href="/events/{{event_id}}/edit">Rediģēt</a>
+            {{/if}}
+        </div>
+    </div>
+</section>
+</main>

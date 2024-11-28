@@ -4,6 +4,7 @@
  * Event object
  * @typedef {Object} Event
  * @property {number} id
+ * @property {number} organizer_id
  * @property {string} name
  * @property {string} type
  * @property {string} description
@@ -34,6 +35,16 @@
  */
 
 /**
+ * Find user by identifier
+ * @param {Database} db
+ * @param {number} key
+ * @returns {Promise<Event>}
+ */
+function loadEvent(db, key) {
+    return db.findRow("events", "id", key);
+}
+
+/**
  * Get all events in database
  * @param {Database} db
  * @returns {Promise<Event[]>}
@@ -48,7 +59,7 @@ function loadEvents(db) {
 }
 
 /**
- * Get the soonest upcoming events (max 30)
+ * Get the soonest upcoming events (max 15)
  * @param {Database} db
  * @returns {Promise<EventTicket[]>}
  */
@@ -64,6 +75,21 @@ function loadUpcomingEvents(db) {
     });
 }
 
-module.exports = { loadEvents, loadUpcomingEvents };
+/**
+ * Get the organizer's events
+ * @param {Database} db
+ * @param {number} organizerId
+ * @returns {Promise<Event[]>}
+ */
+function loadOrganizerEvents(db, organizerId) {
+    return new Promise((resolve, reject) => {
+        db.sqlite.all(
+            `SELECT * FROM events E WHERE organizer_id = ?;`, [organizerId],
+            (err, rows) => err ? reject(err) : resolve(rows)
+        );
+    });
+}
+
+module.exports = { loadEvent, loadEvents, loadUpcomingEvents, loadOrganizerEvents };
 
 

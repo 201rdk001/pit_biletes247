@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biletes 24/7</title>
-    <link rel="stylesheet" href="stylesheet/login.css">
+    <link rel="stylesheet" href="/stylesheet/login.css">
 </head>
 
 <body>
@@ -23,10 +23,8 @@
                 <input type="password" id="password" name="password" placeholder="Izveidojiet paroli" required>
                 <span class="msg-{{msgType}}">{{msgRegister}}</span>
                 <div class="pogas">
-                    <button type="submit">Reģistrēties</button>
-                    <button type="button">
-                        <a href="#">Atgriezties</a>
-                    </button>
+                    <button class="btn" type="submit">Reģistrēties</button>
+                    <a class="btn" href="#">Atgriezties</a>
                 </div>
             </form>
         </div>
@@ -42,10 +40,8 @@
                 <input type="password" id="password" name="password" placeholder="Ievadiet savu paroli" required>
                 <span class="msg-{{msgType}}">{{msgLogin}}</span>
                 <div class="pogas">
-                    <button type="submit">Ienākt</button>
-                    <button type="button">
-                        <a href="#register">Reģistrēties</a>
-                    </button>
+                    <button class="btn" type="submit">Ienākt</button>
+                    <a class="btn" href="#register">Reģistrēties</a>
                 </div>
             </form>
         </div>

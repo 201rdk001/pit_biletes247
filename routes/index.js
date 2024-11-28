@@ -14,7 +14,12 @@ const msgTable = {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.redirect("login");
+  if (req.session.user) {
+    res.redirect("events");
+  }
+  else {
+    res.redirect("login");
+  }
 });
 
 /* GET login page. */
@@ -22,7 +27,7 @@ router.get('/login', function (req, res) {
   res.render("login", { layout: false, ...msgTable[req.query.msg] });
 });
 
-/* POST login auth. */
+/* POST login. */
 router.post('/login', asyncHn(async function (req, res) {
   try {
     const user = await loadUser(req.app.db, req.body.username);
@@ -48,6 +53,7 @@ router.get('/logout', function (req, res) {
   })
 });
 
+/* POST register. */
 router.post('/register', asyncHn(async function (req, res) {
   const hashedPassword = await bcrypt.hash(req.body.password, 12);
 
